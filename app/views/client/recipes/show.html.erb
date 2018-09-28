@@ -1,23 +1,25 @@
-<a href="/client/recipes">Home</a>
-
-<h2>Title: <%= @recipe["title"] %></h2>
+<h2><%= @recipe["title"] %></h2>
 <h3>Chef: <%= @recipe["chef"] %></h3>
-<h5>Prep Time: <%= @recipe["prep_time"] %></h5>
-<h4>ingredients: </h4>
+<h5>Prep Time: <%= @recipe["formatted"]["prep_time"] %></h5>
+<h4>Ingredients: </h4>
+
 <ul>
   <% @recipe["formatted"]["ingredients"].each do |ingredient| %>
     <li><%= ingredient %></li>
   <% end %>
 </ul>
 
-
 <h4>Directions: </h4>
+
 <ol>
   <% @recipe["formatted"]["directions"].each do |direction| %>
     <li><%= direction %></li>
   <% end %>
 </ol>
 
-<h5>Created on: <%= @recipe["formatted"]["created_at"] %></h5>
+<h5>Created On: <%= @recipe["formatted"]["created_at"] %></h5>
+
+<a href="/client/recipes/<%= @recipe["id"] %>/edit">Edit</a>
+<a href="/client/recipes/<%= @recipe["id"] %>" data-method="delete">Delete</a>
 
 <img src="<%= @recipe["image_url"] %>">
